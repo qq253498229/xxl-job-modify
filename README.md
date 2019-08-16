@@ -4,6 +4,8 @@
 
 ## 使用示例:
 
+[示例项目](https://gitee.com/consolelog/xxl-job-modify-sample)
+
 ```yaml
 version: "3"
 services:
