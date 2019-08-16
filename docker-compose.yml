@@ -1,16 +1,12 @@
 version: "3"
 services:
   app:
-    image: test:lates
+    image: registry.cn-beijing.aliyuncs.com/codeforfun/xxl-job-modify:2.1.0
     build: .
     environment:
-      SERVER_PORT: 8844
-      MYSQL_USERNAME: root
       MYSQL_PASSWORD: root
-      MYSQL_HOST: mysql
-      MYSQL_PORT: 3306
     ports:
-      - "8844:8844"
+      - "8080:8080"
   mysql:
     image: mysql:5.7.26
     restart: always
