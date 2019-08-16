@@ -25,7 +25,7 @@ services:
 ## 参数介绍:
 
 名称 | 介绍 | 备注
----|---
+---|---|---
 image | registry.cn-beijing.aliyuncs.com/codeforfun/xxl-job-modify:2.1.0 | 最新版本latest，建议使用精确版本防止更新后被覆盖
 SERVER_PORT | 容器内端口号 | 默认为8080
 MYSQL_USERNAME | MySQL用户名 | 默认为 root
