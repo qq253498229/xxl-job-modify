@@ -13,7 +13,6 @@ RUN mvn package -Dmaven.test.skip=true
 FROM openjdk:8-jre-alpine
 ENV TZ=PRC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 WORKDIR /app
 COPY --from=1 /app/target/app.jar ./app.jar
 ENTRYPOINT ["java","-jar","-Dspring.profiles.active=docker","/app/app.jar"]
