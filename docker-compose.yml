@@ -6,7 +6,7 @@ services:
     environment:
       MYSQL_PASSWORD: root
     ports:
-      - "8080:8080"
+      - "8844:8080"
   mysql:
     image: mysql:5.7.26
     restart: always
