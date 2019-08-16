@@ -37,3 +37,8 @@ SPRING_MAIL_PORT | 邮件port | 默认为 25
 SPRING_MAIL_USERNAME | 邮件用户名 | 默认为 xxx@qq.com
 SPRING_MAIL_PASSWORD | 邮件密码 | 默认为 xxx
 
+## 项目地址
+
+xxl-job [地址](https://gitee.com/xuxueli0323/xxl-job.git)
+
+本文 [地址](https://github.com/qq253498229/xxl-job-modify.git)
