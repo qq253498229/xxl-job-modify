@@ -34,8 +34,10 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://127.0.0.1:3306/xxl_job?Unicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/xxl_job?Unicode=true&characterEncoding=UTF-8&createDatabaseIfNotExist=true
     driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
+    schema: classpath:schema.sql
   ### xxl-job email
   mail:
     host: smtp.qq.com
@@ -62,10 +64,12 @@ spring:
   profiles: docker
   ### xxl-job, datasource
   datasource:
-    username: ${SPRING_DATASOURCE_USERNAME:root}
-    password: ${SPRING_DATASOURCE_PASSWORD:root_pwd}
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://127.0.0.1:3306/xxl_job?Unicode=true&characterEncoding=UTF-8}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root_pwd}
+    url: jdbc:mysql://${MYSQL_HOST:mysql}:${MYSQL_PORT:3306}/xxl_job?Unicode=true&characterEncoding=UTF-8&createDatabaseIfNotExist=true
     driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
+    schema: classpath:schema.sql
   ### xxl-job email
   mail:
     host: ${SPRING_MAIL_HOST:smtp.qq.com}

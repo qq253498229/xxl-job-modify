@@ -5,3 +5,16 @@ services:
     build: .
     environment:
       SERVER_PORT: 8844
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+    ports:
+      - "8844:8844"
+  mysql:
+    image: mysql:5.7.26
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
