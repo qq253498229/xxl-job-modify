@@ -1,0 +1,89 @@
+### web
+server:
+  servlet:
+    context-path: /xxl-job-admin
+spring:
+  ### resources
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
+  ### freemarker
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    charset: utf-8
+    request-context-attribute: request
+    settings:
+      number_format: 0.##########
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    tomcat:
+      max-wait: 10000
+      max-active: 30
+      test-on-borrow: true
+      validation-query: SELECT 1
+      validation-query-timeout: 30000
+### mybatis
+mybatis:
+  mapper-locations: classpath:/mybatis-mapper/*Mapper.xml
+---
+spring:
+  profiles: default
+  ### xxl-job, datasource
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/xxl_job?Unicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+  ### xxl-job email
+  mail:
+    host: smtp.qq.com
+    port: 25
+    username: xxx@qq.com
+    password: xxx
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+server:
+  port: 8080
+xxl:
+  job:
+    ### xxl-job, access token
+    accessToken:
+    ### xxl-job, i18n (default empty as chinese, "en" as english)
+    i18n:
+log:
+  path: /Users/wangbin/out/xxl-job
+---
+spring:
+  profiles: docker
+  ### xxl-job, datasource
+  datasource:
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:root_pwd}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://127.0.0.1:3306/xxl_job?Unicode=true&characterEncoding=UTF-8}
+    driver-class-name: com.mysql.jdbc.Driver
+  ### xxl-job email
+  mail:
+    host: ${SPRING_MAIL_HOST:smtp.qq.com}
+    port: ${SPRING_MAIL_PORT:25}
+    username: ${SPRING_MAIL_USERNAME:xxx@qq.com}
+    password: ${SPRING_MAIL_PASSWORD:xxx}
+    properties:
+      mail.smtp.auth: ${SPRING_MAIL_PROPERTIES_mail.smtp.auth:true}
+      mail.smtp.starttls.enable: ${SPRING_MAIL_PROPERTIES_mail.smtp.starttls.enable:true}
+      mail.smtp.starttls.required: ${SPRING_MAIL_PROPERTIES_mail.smtp.starttls.required:true}
+      mail.smtp.socketFactory.class: ${SPRING_MAIL_PROPERTIES_mail.smtp.socketFactory.class:javax.net.ssl.SSLSocketFactory}
+server:
+  port: ${SERVER_PORT:8080}
+xxl:
+  job:
+    ### xxl-job, access token
+    accessToken: ${XXL_JOB_ACCESSTOKEN:}
+    ### xxl-job, i18n (default empty as chinese, "en" as english)
+    i18n: ${XXL_JOB_I18N:}
+log:
+  path: ${LOGBACK_PATH:/app/logs}

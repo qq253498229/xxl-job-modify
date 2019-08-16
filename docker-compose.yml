@@ -1,0 +1,7 @@
+version: "3"
+services:
+  app:
+    image: test:lates
+    build: .
+    environment:
+      SERVER_PORT: 8844
